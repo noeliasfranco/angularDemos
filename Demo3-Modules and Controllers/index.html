@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<!--le decimos a la aplicacion que se el modulo que creamos, llamado firstModule-->
+<html ng-app="firstModule">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Ejemplo básico de Angular</title>
+	</head>
+	<body>
+		<div class="container" ng-controller="FirstController"> <!-- Le indicamos el controller que queremos usar-->
+			Nombre de Usuario: <input type="text" ng-model="ciudad" />
+			<ul>
+				<li ng-repeat="user in usuarios | filter:ciudad"> <!-- Aca estamos accediendo al scope-->
+					{{user.nombre}} - {{user.ciudad}}
+				</li>
+			</ul>
+		</div>
+		<script src="script/angular.js"></script>
+		<script>
+			var firstModule = angular.module("firstModule",[]);
+			function FirstController($scope) {
+				$scope.usuarios = [ 
+					{ nombre:"Jose", ciudad:"Rosario"},   
+					{ nombre:"Marcelo", ciudad:"Funes"},  
+					{ nombre:"Ricardo", ciudad:"Perez"},  
+					{ nombre:"Enrique", ciudad:"Zavalla"} 
+				];
+			}
+			firstModule.controller("FirstController", FirstController);
+		</script>
+		<script>
+			//Otra manera de definir modulos y controladores
+			/*var firstModule = angular.module("firstModule",[]);
+			var controllers = {};
+			controllers.FirstController = function($scope) {
+				$scope.usuarios = [ 
+					{ nombre:"Jose", ciudad:"Rosario"},   
+					{ nombre:"Marcelo", ciudad:"Funes"},  
+					{ nombre:"Ricardo", ciudad:"Perez"},  
+					{ nombre:"Enrique", ciudad:"Zavalla"} 
+				];
+			}
+			firstModule.controller(controllers);*/
+		</script>
+	</body>
+</html>
+
+
