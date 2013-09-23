@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<!--le decimos a la aplicacion que se el modulo que creamos, llamado firstModule-->
+<html ng-app="firstModule">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Ejemplo básico de Angular</title>
+	</head>
+	<body>
+		<div>
+			<div ng-view=""></div>
+		</div>
+		<script src="script/angular.js"></script>
+		<script>
+			var firstModule = angular.module("firstModule",[]);
+			firstModule.config(function($routeProvider) {
+				$routeProvider
+					.when("/",{
+						controller: "FirstController",
+						templateUrl: "view1.html"
+					})
+					.when("/index",{
+						controller: "FirstController",
+						templateUrl: "view2.html"
+					})
+					.otherwise({redirectTo: "/"});
+			});
+			
+			function FirstController($scope) {
+				$scope.usuarios = [ 
+					{ nombre:"Jose", ciudad:"Rosario"},   
+					{ nombre:"Marcelo", ciudad:"Funes"},  
+					{ nombre:"Ricardo", ciudad:"Perez"},  
+					{ nombre:"Enrique", ciudad:"Zavalla"} 
+				];
+				
+				$scope.addUsuario = function(){
+                    $scope.usuarios.push({nombre: $scope.newUsuario.nombre, ciudad: $scope.newUsuario.ciudad});
+                }
+			}
+			firstModule.controller("FirstController", FirstController);
+		</script>
+		<script>
+			//Otra manera de definir modulos y controladores
+			/*var firstModule = angular.module("firstModule",[]);
+			var controllers = {};
+			controllers.FirstController = function($scope) {
+				$scope.usuarios = [ 
+					{ nombre:"Jose", ciudad:"Rosario"},   
+					{ nombre:"Marcelo", ciudad:"Funes"},  
+					{ nombre:"Ricardo", ciudad:"Perez"},  
+					{ nombre:"Enrique", ciudad:"Zavalla"} 
+				];
+			}
+			firstModule.controller(controllers);*/
+		</script>
+	</body>
+</html>
+
+
