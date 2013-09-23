@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<html ng-app>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Ejemplo básico de Angular</title>
+	</head>
+	<body>
+		<div class="container" ng-init="names=['juan','jose','pedro']">
+			Nombre de Usuario: <input type="text" ng-model="nombre" /> {{nombre}}
+			<ul>
+				<li ng-repeat="name in names | filter:nombre">{{name}}</li>
+			</ul>
+		</div>
+		<script src="script/angular.js"></script>
+
+	</body>
+</html>
+
+

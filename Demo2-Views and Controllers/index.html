@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html ng-app>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Ejemplo básico de Angular</title>
+	</head>
+	<body>
+		<div class="container" ng-controller="FirstController"> <!-- Le indicamos el controller que queremos usar-->
+			Nombre de Usuario: <input type="text" ng-model="ciudad" />
+			<ul>
+				<li ng-repeat="user in usuarios | filter:ciudad"> <!-- Aca estamos accediendo al scope-->
+					{{user.nombre}} - {{user.ciudad}}
+				</li>
+			</ul>
+		</div>
+		<script src="script/angular.js"></script>
+		<script>
+			function FirstController($scope){ //pasamos $scope como parámetro. Esto es dependency injection
+				$scope.usuarios = [
+					{ nombre:"Jose", ciudad:"Rosario"},
+					{ nombre:"Marcelo", ciudad:"Funes"},
+					{ nombre:"Ricardo", ciudad:"Perez"},
+					{ nombre:"Enrique", ciudad:"Zavalla"}
+					
+				];
+			}
+		</script>
+	</body>
+</html>
+
+
