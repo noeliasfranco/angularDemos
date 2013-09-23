@@ -1,11 +1,11 @@
-<div class="container" ng-controller="FirstController"> <!-- Le indicamos el controller que queremos usar-->
+<div class="container" ng-controller="FirstController">
 	<h2>Vista 2</h2>
 	Nombre de Usuario: <input type="text" ng-model="newUsuario.nombre" /></div><br>
 	Ciudad: <input type="text" ng-model="newUsuario.ciudad"/><br>
 	
 	<button ng-click="addUsuario()">Agregar Usuario</button>
 	<ul>
-		<li ng-repeat="user in usuarios | filter:nombre"> <!-- Aca estamos accediendo al scope-->
+		<li ng-repeat="user in usuarios | filter:nombre">
 			{{user.nombre}} - {{user.ciudad}}
 		</li>
 	</ul>

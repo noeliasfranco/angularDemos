@@ -35,7 +35,10 @@
 				];
 				
 				$scope.addUsuario = function(){
-                    $scope.usuarios.push({nombre: $scope.newUsuario.nombre, ciudad: $scope.newUsuario.ciudad});
+                    $scope.usuarios.push({
+						nombre: $scope.newUsuario.nombre, 
+						ciudad: $scope.newUsuario.ciudad
+					});
                 }
 			}
 			firstModule.controller("FirstController", FirstController);
